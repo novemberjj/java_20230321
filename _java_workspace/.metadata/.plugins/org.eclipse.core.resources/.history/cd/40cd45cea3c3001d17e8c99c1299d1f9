@@ -1,0 +1,11 @@
+package product;
+
+public interface ProductInterface {
+	/* 기능들은 정리해놓는게 좋음
+	 * */
+	void add();
+	void printProduct();
+	void orerPick(String name, int count);
+	void printOrder();
+
+}

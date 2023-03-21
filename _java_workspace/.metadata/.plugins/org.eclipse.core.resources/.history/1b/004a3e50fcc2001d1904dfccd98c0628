@@ -1,0 +1,37 @@
+package product;
+
+public class Product {
+	
+	private String productName;
+	private int productPrice;
+	
+	public Product() {}
+	
+	public Product(String productName, int productPrice) {
+		super();
+		this.productName = productName;
+		this.productPrice = productPrice;
+	}
+
+	@Override
+	public String toString() {
+		return productName+" "+productPrice+"원";
+	}
+
+	public String getProductNmae() {
+		return productName;
+	}
+
+	public void setProductNmae(String productName) {
+		this.productName = productName;
+	}
+
+	public int getProductPrice() {
+		return productPrice;
+	}
+
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
+	}
+
+}

@@ -1,0 +1,24 @@
+package studentmanager;
+import java.util.Scanner;
+public class Main {
+
+	public static void main(String[] args) {
+		Student s= new Student();
+		s.insertSubject(101,"java",4,7,"홍길동",2,"전공","9:00~11:00");
+		s.insertSubject(101,"html",4,7,"홍길동",2,"전공","9:00~11:00");
+		s.insertSubject(101,"db",4,7,"홍길동",2,"전공","9:00~11:00");
+		
+		Scanner scan= new Scanner(System.in);
+		
+		System.out.println(s);
+		
+		s.deleteSubject("db");
+		System.out.println(s);
+		StudentManager sm = new StudentManager();
+		
+		sm.insertStudent(scan);
+		
+		
+	}
+
+}

@@ -1,0 +1,73 @@
+package product;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class ProductManager implements Pm {
+	private ArrayList<Product> menuList= new ArrayList<Product>();
+	private ArrayList<Order> orderList= new ArrayList<Order>();
+	private int totSum;
+	
+	
+	
+	@Override
+	public void add(Scanner scan) {
+		char ch='y';
+		while(ch!='n') {
+			System.out.println("-- 제품 등록 --");
+			System.out.println("메뉴명 > ");
+			String name=scan.next();
+			System.out.println("가격 >");
+			int price= scan.nextInt();
+			Product p= new Product(name, price);
+			menuList.add(p);
+			System.out.println("계속 > y 종료 > n");
+			ch=scan.next().charAt(0);
+		}
+		
+	}
+	@Override
+	public void printProduct() {
+		System.out.println("-- 제품 리스트 --");
+		System.out.println(menuList);
+		
+	}
+	@Override
+	public void orderPick(Scanner scan) {
+		char ch='y';
+		while(ch!='n') {
+			System.out.println("-- 주문 --");
+			System.out.println("메뉴 번호 입력 >");
+			int orderNum= scan.nextInt();
+			System.out.println("수량 입력 >");
+			int count= scan.nextInt();
+			Order o=new Order(orderNum, count);
+			orderList.add(o);
+			int menuNum=orderNum-1;
+			if(menuList.get(menuNum)==null) {
+				System.out.println("잘못된 메뉴입니다.");
+			}else {
+				totSum=totSum+menuList.get(menuNum).getProductPrice()*count;
+			}
+			
+			System.out.println("계속 > y 종료 > n");
+			ch=scan.next().charAt(0);
+			
+		}
+		
+	}
+	@Override
+	public void orderPrint() {
+		System.out.println("-- 주문 내역 --");
+		for(int i=0;i<orderList.size();i++) {
+			System.out.println("메뉴:"+menuList.get((orderList.get(i).getOrderNum()-1))+", 수량:"+menuList.get((orderList.get(i).getOrderCount()-1)));
+			System.out.println("총 지불 금액:"+totSum);
+			
+		}
+		
+	}
+	
+	
+
+}

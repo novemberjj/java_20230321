@@ -1,0 +1,38 @@
+package studentmanager;
+import java.util.Scanner;
+public class Main {
+
+	public static void main(String[] args) {
+		Student s= new Student();
+		
+		Scanner scan= new Scanner(System.in);
+		StudentManager sm = new StudentManager();
+		int num=0;
+		while(num!=6) {
+			System.out.println("==== 메뉴 =====");
+			System.out.println("1. 학생 등록");
+			System.out.println("2. 전체 학생 조회");
+			System.out.println("3. 학생 검색");
+			System.out.println("4. 수강 신청");
+			System.out.println("5. 수강 철회");
+			System.out.println("6. 종료");
+			num=scan.nextInt();
+			
+			switch(num) {
+			case 1: sm.insertStudent(scan); break;
+			case 2: sm.printStudent(); break;
+			case 3: sm.serachStudent(scan); break;
+			case 4: sm.registerSubject(scan); break;
+			case 5: sm.deleteSubject(scan); break;
+			case 6: System.out.println("종료"); break;
+			default: System.out.println("1~6까지 숫자 중에 입력해주세요.");
+			num=scan.nextInt();
+			}
+		}
+		
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+package studentmanager;
+
+public interface Program {
+
+	void printStudent();
+	void insertStudent();
+	void searchStudent();
+	void registerSubject();
+	void deleteSubject();
+
+}

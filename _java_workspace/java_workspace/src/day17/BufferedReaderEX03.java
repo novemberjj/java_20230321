@@ -1,0 +1,60 @@
+package day17;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+public class BufferedReaderEX03 {
+
+	public static void main(String[] args) throws IOException  {
+		/* out.txt파일을 읽어들여 map에 저장 후 합계 출력
+		 * 이름 : 점수 
+		 * 총 합계출력
+		 * 
+		 * map.put(name,score);
+		 * 입력받은 값은 전부 String 계산을 위해서는 int 자료형으로 변환이 필요
+		 *                
+		 * */
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		BufferedReader br = new BufferedReader(new FileReader("out.txt"));
+		
+		while(true) {
+			String line = br.readLine(); //한라인씩 읽어들임 //홍길동 97
+			if(line==null)break; //마지막 라인일경우 null입력되면 반복문 빠져나감 //한줄일때 중괄호 안열어도 됨
+			
+			//홍길동 97 substring(stratindex(포함), endindex(미포함))
+			String name=line.substring(0, line.indexOf(" "));
+			//endindex를 적지 않으면 끝까지
+			int score= Integer.parseInt(line.substring(line.indexOf(" ")+1));
+			
+			map.put(name, score);	
+		}
+		
+		br.close();
+		
+		int sum=0;
+		Iterator<String> it= map.keySet().iterator();
+		while(it.hasNext()) {
+			String name=it.next();
+			System.out.println(name+":"+map.get(name));
+			sum=sum+map.get(name);
+		}
+		System.out.println("총 합계:"+sum+", 총 인원 수:"+map.size());
+		System.out.printf("평균:%.2f",(double)sum/map.size());
+		
+		
+		
+		
+		
+		
+
+	}
+
+}

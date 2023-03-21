@@ -1,0 +1,142 @@
+package studentmanager;
+
+import java.util.Arrays;
+
+class Student {
+		/*학생 클래스 : 한 학생의 정보를 나타내는 클래스
+		- 학번, 이름, 생년월일, 학부, 학과, 수강과목s(과목 클래스를 배열로 생성), 
+		- 수강과목의 번지를 대신할 cnt 변수
+		- 메서드
+		get/set toString, 
+		- 수강 과목 추가,(배열이 다 찼다면 늘려주기)
+		- 수강 과목 삭제
+		 * */
+		private int studentNum;
+		private String name;
+		private int birth;
+		private String grade;
+		private String department;
+		private Subject subList[]= new Subject[5];
+		//private Subject subList2[];
+		private int cnt;
+		
+		public Student() {}
+		
+		public Student(int studentNum, String name, int birth, String grade, String department) {
+			super();
+			this.studentNum = studentNum;
+			this.name = name;
+			this.birth = birth;
+			this.grade = grade;
+			this.department = department;
+			//subList = new Subject[5];
+			
+		}
+
+
+
+//		public void insertSubject(int code, String subject, int score, int subTime, String tName, int semester, String category, String time) {
+//			if(cnt>=subList.length) {
+//				Subject subList2[] = new Subject[subList.length*2];
+//				System.arraycopy(subList, 0, subList2, 0, subList.length);
+//				subList=subList2;
+//				cnt++;
+//			}else {
+//				subList[cnt]=new Subject(code, subject, score, subTime, tName, semester, category, time);
+//				cnt++;
+//			}
+//		}
+		
+		public void insertSubject (String subject) {
+			if(cnt>=subList.length) {
+				Subject subList2[] = new Subject[subList.length*2];
+				System.arraycopy(subList, 0, subList2, 0, subList.length);
+				subList=subList2;
+				cnt++;
+			}else {
+				subList[cnt]=new Subject(subject);
+				cnt++;
+			}
+		}
+		
+		
+		public void deleteSubject(String subject) {
+			for(int i=0;i<cnt;i++) {
+				if(subject.equals(subList[i].getSubject())) {
+					subList[i]=null;
+					
+				}
+			}
+		}
+		
+		
+
+		@Override
+		public String toString() {
+			return "Student [studentNum=" + studentNum + ", name=" + name + ", birth=" + birth + ", grade=" + grade
+					+ ", department=" + department + ","+ " subList=" + Arrays.toString(subList) + "]";
+		}
+
+		public int getStudentNum() {
+			return studentNum;
+		}
+
+		public void setStudentNum(int studentNum) {
+			this.studentNum = studentNum;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public int getBirth() {
+			return birth;
+		}
+
+		public void setBirth(int birth) {
+			this.birth = birth;
+		}
+
+		public String getGrade() {
+			return grade;
+		}
+
+		public void setGrade(String grade) {
+			this.grade = grade;
+		}
+
+		public String getDepartment() {
+			return department;
+		}
+
+		public void setDepartment(String department) {
+			this.department = department;
+		}
+
+		public Subject[] getSubList() {
+			return subList;
+		}
+
+		public void setSubList(Subject[] subList) {
+			this.subList = subList;
+		}
+
+		
+		public int getCnt() {
+			return cnt;
+		}
+
+		public void setCnt(int cnt) {
+			this.cnt = cnt;
+		}
+		
+		
+		
+		
+		
+
+}

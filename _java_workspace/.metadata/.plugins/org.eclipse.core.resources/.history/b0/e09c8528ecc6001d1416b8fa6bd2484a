@@ -1,0 +1,82 @@
+package day15;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class WordMain {
+
+
+	public static void main(String[] args) throws IOException {
+		Scanner scan= new Scanner(System.in);
+	//	ArrayList<Word>list= new ArrayList<>();
+//		System.out.println("입력할 단어 개수:"); //5개의 단어만 추가
+//		int size= scan.nextInt();
+//		while(list.size()<size) {
+//			System.out.println("단어:");
+//			String word= scan.next();
+//			System.out.println("의미:");
+//			//nextList() : 공백을 포함
+//			scan.nextLine(); //위에서 입력한 enter를 버려주는 값이 필요
+//			String mean= scan.nextLine();
+//			list.add(new Word(word, mean));
+//		}
+//		//정렬
+//		//Collections.sort(list); //hascode와 equals 이용할때
+//		Collections.sort(list, new Comparator<Word>() {
+//
+//			@Override
+//			public int compare(Word o1, Word o2) {
+//				// TODO Auto-generated method stub
+//				return o1.getWord().compareTo(o2.getWord());
+//			}
+//			
+//		});
+//		
+//		
+//		
+//		//출력
+//		for(Word tmp : list) {
+//			System.out.println(tmp);
+//		}
+//		
+//		
+//		System.out.println("---------------------------------");
+		WordManager wm = new WordManager();
+		wm.add();
+		int menu=0;
+		
+		while(menu!=7) {
+			System.out.println("==== 메뉴 ====");
+			System.out.println("1. 단어 추가");
+			System.out.println("2. 단어 출력");
+			System.out.println("3. 단어 검색");
+			System.out.println("4. 단어 수정");
+			System.out.println("5. 단어 삭제");
+			System.out.println("6. 파일로 출력");
+			System.out.println("7. 종료");
+			menu=scan.nextInt();
+			
+			switch(menu) {
+			case 1: wm.bufferedAdd(); break;
+			case 2: wm.printWord(); break;
+			case 3: wm.searchWord(); break;
+			case 4: wm.updateWord(); break;
+			case 5: wm.deleteWord(); break;
+			case 6: wm.printToFile();; break;
+			case 7: break;
+			}
+		}
+		System.out.println("프로그램 종료");
+		
+		
+		
+		
+		
+		scan.close();
+
+	}
+
+}

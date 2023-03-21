@@ -1,0 +1,97 @@
+package day15;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SaleManager {
+	Scanner scan= new Scanner(System.in); //멤버변수
+	
+	private ArrayList <Sale<String,Integer>> saleList= new ArrayList<>(); //여기서 자료형 지정
+	private ArrayList <Sale<String,Integer>> orderList= new ArrayList<Sale<String,Integer>>();
+	
+	
+	public void addMenu() {
+		saleList.add(new Sale<String, Integer>("햄버거", 15000));
+		saleList.add(new Sale<String, Integer>("피자", 20000));
+		saleList.add(new Sale<String, Integer>("음료", 2000));
+		saleList.add(new Sale<String, Integer>("과자", 2000));
+		saleList.add(new Sale<String, Integer>("사탕", 500));
+	}
+	
+	public void add() { //스캐너 매개변수로 쓸 때
+		System.out.println("-- 제품 등록 --");
+		System.out.println("제품명:");
+		String menu=scan.next();
+		System.out.println("가격:");
+		int price=scan.nextInt();
+		Sale s= new Sale(menu, price);
+		saleList.add(s);
+		
+	}
+	
+	public void print() {
+		
+			
+			System.out.println("==== 메뉴 ====");
+			System.out.println("1. 제품 등록");
+			System.out.println("2. 제품 리스트");
+			System.out.println("3. 제품 주문");
+			System.out.println("4. 주문 내역");
+			System.out.println("5. 제품 수정");
+			System.out.println("6. 제품 삭제");
+			System.out.println("7. 종료");
+			System.out.println("입력 >");
+			
+	
+	}
+	
+	public void salePrint() {
+		System.out.println("-- 제품 리스트 --");
+		for(int i=0;i<saleList.size();i++) {
+			System.out.print(i+1+". ");
+			saleList.get(i).printMenu();
+		}
+		System.out.println("-------------");
+		
+	}
+	
+	public void order() {
+		int index=-1;
+		System.out.println("주문 메뉴 :");
+		String orderMenu= scan.next();
+		System.out.println("주문 수량:");
+		int orderCount=scan.nextInt();
+		
+		for(int i=0;i<saleList.size();i++) {
+			if(orderMenu.equals(saleList.get(i).getMenu())) {
+				int price = saleList.get(i).getPrice();
+				//int price = (Integer)saleList.get(i).getPrice(); //원래 해주는게 맞음
+				Sale s= new Sale(orderMenu, orderCount*price);
+				orderList.add(s);
+				index=i;
+			}
+		}
+		if(index==-1) {
+			System.out.println("없는 메뉴입니다.");
+		}
+		
+	}
+	
+	public void orderPrint() {
+		int sum=0;
+		for(Sale s : orderList) { 
+			System.out.println("s");
+			sum+=(Integer)s.getPrice();
+		}
+		System.out.println("지불 총 금액:"+sum);
+	}
+	
+	public void update() {
+		
+	}
+	
+	public void delete() {
+		
+	}
+
+}

@@ -1,0 +1,44 @@
+package product;
+
+public class Order extends Product{
+	
+	private int count;
+	private int totsum;
+	
+	public Order() {}
+	
+	public Order(int count, int totsum) {
+		super();
+		this.count = count;
+		this.totsum = totsum;
+	}
+	
+	public void orderPrint(int count, int totSum) {
+		
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Order [count=" + count + ", totsum=" + totsum + "]";
+	}
+
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public int getTotsum() {
+		return totsum;
+	}
+	public void setTotsum(int totsum) {
+		this.totsum = totsum;
+	}
+	
+	
+	
+	
+	
+
+}

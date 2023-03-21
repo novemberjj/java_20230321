@@ -1,0 +1,118 @@
+package product;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ProductManager implements ProductInterface {
+	
+	private ArrayList<Product> menu = new ArrayList<Product>();
+	private ArrayList<Order> order = new ArrayList<Order>();
+	
+	public void addMenu() {
+		menu.add(new Product("햄버거", 15000));
+		menu.add(new Product("피자", 20000));
+		menu.add(new Product("음료", 2000));
+		menu.add(new Product("과자", 2000));
+		menu.add(new Product("사탕", 500));
+	}
+	
+	@Override
+	public void add(Scanner scan) {
+		System.out.println("-- 제품 등록 --");
+		System.out.println("메뉴명 >");
+		String name=scan.next();
+		System.out.println("가격 >");
+		int price = scan.nextInt();
+		
+		menu.add(new Product(name, price));
+		
+	}
+
+	@Override
+	public void printProduct() {
+		System.out.println("-- 제품 리스트 --");
+		for(int i=0;i<menu.size();i++) {
+			menu.get(i).printProduct();
+		}
+		System.out.println("--------------");
+		
+	}
+
+	@Override
+	public void orerPick(Scanner scan) {
+		System.out.println("-- 제품 주문 --");
+		System.out.println("메뉴명 > ");
+		String name= scan.next();
+		System.out.println("수량 > ");
+		int count = scan.nextInt();
+		for(int i=0;i<menu.size();i++) {
+			if(menu.get(i).getName().equals(name)) {
+				int price= menu.get(i).getPrice();
+				Order order = new Order();
+				order.setName(name);
+				order.setPrice(price);
+				order.setCount(count);
+				order.setTotal(price*count);
+				this.order.add(order);
+			}
+		}
+		
+	}
+
+	@Override
+	public void printOrder() {
+		int sum=0;
+		System.out.println("-- 주문 내역 --");
+		for(int i=0;i<order.size();i++) {
+			order.get(i).print();
+			sum+= order.get(i).getTotal();
+		}
+		System.out.println("-------------");
+		System.out.println("지불 총 금액:"+sum);
+		
+	}
+
+	@Override
+	public void delete(Scanner scan) {
+		int index=-1;
+		System.out.println("-- 제품 삭제 --");
+		System.out.println("메뉴명 > ");
+		String name= scan.next();
+		for(int i=0;i<menu.size();i++) {
+			if(menu.get(i).getName().equals(name)) {
+				menu.remove(menu.get(i));
+				index=i;
+				break;
+			}
+			if(index==-1) {
+				System.out.println("제품 목록에 제품이 없습니다.");
+			}
+		}
+		
+	}
+
+	@Override
+	public void update(Scanner scan) {
+		System.out.println("-- 제품 수정 --"); //가격 수정
+		int index=-2;
+		System.out.println("메뉴명 > ");
+		String name= scan.next();
+		System.out.println("가격 >");
+		int price= scan.nextInt();
+		for(int i=0;i<menu.size();i++) {
+			if(menu.get(i).getName().equals(name)) {
+				menu.get(i).setPrice(price);
+				index=i;
+				break;
+			}
+		}
+			if(index==-1) {
+				System.out.println("제품 목록에 제품이 없습니다.");
+		}
+		
+		
+	}
+
+	
+
+}

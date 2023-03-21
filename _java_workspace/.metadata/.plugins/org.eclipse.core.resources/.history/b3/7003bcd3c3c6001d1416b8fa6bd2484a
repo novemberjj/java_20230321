@@ -1,0 +1,10 @@
+package day17;
+
+public class PrintWriterEx01 {
+
+	public static void main(String[] args) {
+		/* PrintWriter : 개체의 형식화된 표현을 텍스트 출력 스트림으로 출력
+		 * */
+	}
+
+}

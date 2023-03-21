@@ -1,0 +1,122 @@
+package studentmanager;
+
+import java.util.Scanner;
+
+public class ProgramManager implements Program {
+	
+	//멤버 변수 student class , stdCount 변수 
+	private Student std[]= new Student[10];
+	private  int stdCount; //등록한 학생 카운트
+
+	@Override
+	public void printStudent() {
+		System.out.println("---- 전체 학생 정보 ----");
+		for(int i=0;i<stdCount;i++) {
+			std[i].stdPrint(); //학생 정보만 출력
+			//printStudentOne(std[i]); //학생정보+수강정보 같이 출력
+		}
+		System.out.println("--------------------");
+	}
+
+	@Override
+	public void insertStudent(Scanner scan) {
+		// 1명의 학생 정보 값을 입력 받아 객체를 생성한 후 등록
+		//학번, 이름, 주민등록번호, 학부, 학과 
+		System.out.println("--학생 정보 입력--");
+		System.out.println("이름 >");
+		String stdName= scan.next();
+		System.out.println("학번 >");
+		String sNum= scan.next();
+		System.out.println("주민번호 >");
+		String rNum=scan.next();
+		System.out.println("학부 >");
+		String faculy = scan.next();
+		System.out.println("학과 >");
+		String major=scan.next();
+		System.out.println("---------------");
+		//입력 받은 값으로 객체를 생성
+		Student s= new Student(sNum, stdName, rNum, faculy, major);
+		//배열이 다 찼다면 더 큰 배열을 생성 후 배열복사
+		if(stdCount==std.length) {
+			Student tmp[]=new Student[std.length+5]; //새배열
+			System.arraycopy(std, 0, tmp, 0, stdCount);
+			std=tmp;
+		}
+		std[stdCount]=s;
+		//std배열에 등록
+		stdCount++; //인원 증가(배열 번지 증가)
+		
+	}
+
+	@Override
+	public void searchStudent(Scanner scan) {
+		//검색할 학생이름을 입력 후 배열에서 탐색 후 있다면 학생정보+수강정보 출력
+		//학생정보+수강정보 출력 =>printStudentOne() 호출
+		int search=0;
+		System.out.println("--학생 검색--");
+		System.out.println("이름 > ");
+		String name= scan.next();
+		for(int i=0;i<stdCount;i++) {
+			if(name.equals(std[i].getStdName())) {
+				printStudentOne(std[i]);
+				search++;
+			}
+		}
+		if(search==0) {
+			System.out.println("검색 결과가 없습니다.");
+		}
+	}
+
+	@Override
+	public void registerSubject(Scanner scan) {
+		int search=0;
+		System.out.println("--수강 신청--");
+		System.out.println("이름 > ");
+		String name= scan.next();
+		for(int i=0;i<stdCount;i++) {
+			if(name.equals(std[i].getStdName())) {
+				search++;
+				System.out.println("과목 >");
+				String subName=scan.next();
+				Subject sub= new Subject(subName);
+				std[i].insertSubject(sub);
+			}
+		}
+		if(search==0) {
+			System.out.println("수강 신청할 학생이 없습니다.");
+		}
+	}
+
+	@Override
+	public void deleteSubject(Scanner scan) {
+		int search=0;
+		System.out.println("--수강 철회--");
+		System.out.println("이름 > ");
+		String name= scan.next();
+		for(int i=0;i<stdCount;i++) {
+			if(name.equals(std[i].getStdName())) {
+				search++;
+				System.out.println("과목 >");
+				String subName=scan.next();
+				std[i].deleteSubject(subName);
+			}
+		}
+		if(search==0) {
+			System.out.println("수강 철회할 학생이 없습니다.");
+		}
+	}
+		
+		
+	
+	//1명의 학생정보+수강정보를 같이 출력하고 싶을 때
+	public void printStudentOne(Student s) { //1명의 student 객체를 불러와서 출력
+		System.out.println("--학생 정보--");
+		s.stdPrint();
+		System.out.println("--수강 정보--");
+		s.subPrint();
+	}
+
+		
+	
+
+}

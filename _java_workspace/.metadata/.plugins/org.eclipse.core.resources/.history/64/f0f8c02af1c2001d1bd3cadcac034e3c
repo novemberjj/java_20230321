@@ -1,0 +1,6 @@
+package product;
+
+public class Order extends Product{
+	private int orderCount;
+	private int totSum;
+}

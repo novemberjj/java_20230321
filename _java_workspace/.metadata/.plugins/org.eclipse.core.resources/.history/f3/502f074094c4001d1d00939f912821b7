@@ -1,0 +1,39 @@
+package day16;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class StreamEx03 {
+
+	public static void main(String[] args) {
+		List<Student> stdList = new ArrayList<>();
+		
+		stdList.add(new Student("홍길동", 90));
+		stdList.add(new Student("홍길순", 76));
+		stdList.add(new Student("강감찬", 87));
+		stdList.add(new Student("강길동", 46));
+		stdList.add(new Student("강길순", 67));
+		
+		//Student class에 toString이 있으면 그냥 찍으면 된다
+		stdList.stream().forEach(a->System.out.println(a.getName()+":"+a.getScore()));;
+		//{} : 처리구문이 많은 경우
+		stdList.stream().forEach(s->{ //s => new Student("홍길동",90) 하나의 객체다
+			String name= s.getName();
+			int score = s.getScore();
+			System.out.println(name+":"+score);
+		});
+		
+		int sum=stdList.stream().map(n->n.getScore()).mapToInt(a->a.intValue()).sum();
+		System.out.println("합계:"+sum);
+		long cnt=stdList.stream().count();
+		System.out.println("인원:"+cnt);
+		
+		
+		
+		
+
+	}
+
+}

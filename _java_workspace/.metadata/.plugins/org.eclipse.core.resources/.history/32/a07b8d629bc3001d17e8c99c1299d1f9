@@ -1,0 +1,110 @@
+package studentmanager;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Student {
+	
+	/* class Student 별도 생성
+	학생 클래스 : 한 학생의 정보를 나타내는 클래스
+	- 학번, 이름, 생년월일, 학부, 학과, 수강과목s(과목 클래스를 배열로 생성), 
+	- 수강과목의 번지를 대신할 cnt 변수
+	- 메서드
+	- 생성자, get/set, print간단, print세부
+	- 수강 과목 추가,(배열이 다 찼다면 늘려주기)
+	- 수강 과목 삭제
+	 * */
+	private String stdCode;
+	private String stdName;
+	private String registerNum;
+	private String faculty;
+	private String major;
+	private List<Subject> subList= new ArrayList<Subject>();
+	
+	public Student() {}
+	
+	public Student(String stdName) {
+		this.stdName=stdName;
+	}
+	
+	public Student(String stdCode, String stdName, String registerNum, String faculty, String major,
+			List<Subject> subList) {
+		super();
+		this.stdCode = stdCode;
+		this.stdName = stdName;
+		this.registerNum = registerNum;
+		this.faculty = faculty;
+		this.major = major;
+		this.subList = subList;
+	}
+	@Override
+	public String toString() {
+		return "Student [stdCode=" + stdCode + ", stdName=" + stdName + ", registerNum=" + registerNum + ", faculty="
+				+ faculty + ", major=" + major + ", subList=" + subList + "]";
+	}
+	
+	public void inserSubject(Subject subName) {
+		subList.add(subName);
+	}
+	
+	public void deleteSubject(String subName) {
+		int index=-1;
+		for(int i=0;i<subList.size();i++) {
+			if(subName.equals(subList.get(i).getSubName())) {
+				subList.remove(i);
+				index=i;
+				break;
+			}
+		}
+		if(index==-1) {
+			System.out.println("철회할 과목이 없습니다.");
+			return;
+		}
+	}
+	
+	
+	
+	public String getStdCode() {
+		return stdCode;
+	}
+	public void setStdCode(String stdCode) {
+		this.stdCode = stdCode;
+	}
+	public String getStdName() {
+		return stdName;
+	}
+	public void setStdName(String stdName) {
+		this.stdName = stdName;
+	}
+	public String getRegisterNum() {
+		return registerNum;
+	}
+	public void setRegisterNum(String registerNum) {
+		this.registerNum = registerNum;
+	}
+	public String getFaculty() {
+		return faculty;
+	}
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	public List<Subject> getSubList() {
+		return subList;
+	}
+	public void setSubList(List<Subject> subList) {
+		this.subList = subList;
+	}
+	
+	
+	
+	
+	
+	
+
+}

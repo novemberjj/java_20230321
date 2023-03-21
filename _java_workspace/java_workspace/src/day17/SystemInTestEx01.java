@@ -1,0 +1,25 @@
+package day17;
+
+import java.io.IOException;
+
+public class SystemInTestEx01 {
+
+	public static void main(String[] args) {
+		/* 알파벳 하나를 쓰고 Enter를 누르면 알파벳을 콘솔에 출력
+		 * */
+		System.out.println("알파벳 하나를 쓰고 Enter : "); //여러개
+		int i;
+		try {
+			while((i= System.in.read())!='\n') {
+			//	i= System.in.read(); //하나의 바이트만을 읽을 수 있음
+				//System.out.println(i); //아스키코드
+				System.out.print((char)i); //형변환
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

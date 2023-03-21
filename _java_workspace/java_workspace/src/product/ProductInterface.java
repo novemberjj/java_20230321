@@ -1,0 +1,15 @@
+package product;
+
+import java.util.Scanner;
+
+public interface ProductInterface {
+	/* 기능들은 정리해놓는게 좋음
+	 * */
+	void add(Scanner scan); //메뉴추가
+	void printProduct(); //메뉴출력
+	void orerPick(Scanner scan); //주문
+	void printOrder(); //주문내역 출력
+	void delete(Scanner scan);
+	void update(Scanner scan);
+
+}

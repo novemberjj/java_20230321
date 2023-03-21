@@ -1,0 +1,70 @@
+package day15;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SaleManager {
+	Scanner scan= new Scanner(System.in); //멤버변수
+	
+	private ArrayList <Sale<String,Integer>> saleList= new ArrayList<>(); //여기서 자료형 지정
+	private ArrayList <Sale<String,Integer>> orderList= new ArrayList<Sale<String,Integer>>();
+	
+	
+	public void addMenu() {
+		saleList.add(new Sale<String, Integer>("햄버거", 15000));
+		saleList.add(new Sale<String, Integer>("피자", 20000));
+		saleList.add(new Sale<String, Integer>("음료", 2000));
+		saleList.add(new Sale<String, Integer>("과자", 2000));
+		saleList.add(new Sale<String, Integer>("사탕", 500));
+	}
+	
+	public void add() { //스캐너 매개변수로 쓸 때
+		System.out.println("제품명:");
+		String menu=scan.next();
+		System.out.println("가격:");
+		int price=scan.nextInt();
+		Sale s= new Sale(menu, price);
+		saleList.add(s);
+		
+	}
+	
+	public void print() {
+		
+			
+			System.out.println("==== 메뉴 ====");
+			System.out.println("1. 제품 등록");
+			System.out.println("2. 제품 리스트");
+			System.out.println("3. 제품 주문");
+			System.out.println("4. 주문 내역");
+			System.out.println("5. 제품 수정");
+			System.out.println("6. 제품 삭제");
+			System.out.println("7. 종료");
+			System.out.println("입력 >");
+			
+	
+	}
+	
+	public void salePrint() {
+		for(int i=0;i<saleList.size();i++) {
+			saleList.get(i).printMenu();
+		}
+		
+	}
+	
+	public void order() {
+		
+	}
+	
+	public void orderPrint() {
+		
+	}
+	
+	public void update() {
+		
+	}
+	
+	public void delete() {
+		
+	}
+
+}

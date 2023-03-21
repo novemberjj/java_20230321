@@ -1,0 +1,12 @@
+package day15;
+
+public class SaleMain {
+
+	public static void main(String[] args) {
+		
+		SaleManager sm = new SaleManager();
+		sm.add();
+
+	}
+
+}

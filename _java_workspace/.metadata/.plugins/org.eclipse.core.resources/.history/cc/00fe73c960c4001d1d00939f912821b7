@@ -1,0 +1,76 @@
+package day16;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+
+public class EnglishDictionary {
+	public static void main(String[] args) {
+		Word w= new Word();
+		w.makeWord();
+		w.printWord();
+	}
+
+}
+
+class Word{
+	//hello : 안녕, 아침인사, 반가움
+	private Map<String, ArrayList<String>>words = new HashMap<String, ArrayList<String>>();
+	Scanner scan= new Scanner(System.in);
+	
+	/* y를 입력하면 단어를 입력, n을 입력하면 종료
+	 * 단어가 이미 있다면 '이미 있는 단어입니다.' 등록 금지
+	 * 메서드명 : makeword, 단어 출력 메서드
+	 * */
+	
+
+	public Word() {}
+	
+	public Word(Map<String, ArrayList<String>> words) {
+		super();
+		this.words = words;
+	}
+	
+	public void makeWord() {
+		char ch='y';
+		while(ch!='n') {
+			System.out.println("단어:");
+			String word = scan.next();
+			System.out.println("뜻:");
+			scan.nextLine();
+			String mean =scan.nextLine();
+			mean.split("");
+			ArrayList<String> means = new ArrayList<String>();
+			means.add(mean);
+			words.put(word, means);
+			
+			System.out.println("계속 > y 종료 > n");
+			ch=scan.next().charAt(0);
+		}
+		
+	}
+	
+	public void printWord() {
+		Iterator<String> it = words.keySet().iterator();
+		while(it.hasNext()) {
+			String mean=it.next();
+			System.out.println(mean+":"+words.get(mean));
+		}
+	}
+	
+	
+
+	
+
+	public Map<String, ArrayList<String>> getWords() {
+		return words;
+	}
+
+	public void setWords(Map<String, ArrayList<String>> words) {
+		this.words = words;
+	}
+	
+	
+}

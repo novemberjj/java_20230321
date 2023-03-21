@@ -1,0 +1,13 @@
+package studentmanager;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Student s= new Student();
+		s.insertSubject("java");
+		s.insertSubject("html");
+		System.out.println(s.getSubList());
+		
+	}
+
+}

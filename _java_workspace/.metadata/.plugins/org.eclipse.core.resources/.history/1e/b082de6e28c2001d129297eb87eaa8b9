@@ -1,0 +1,27 @@
+package studentmanager;
+import java.util.Scanner;
+public class Main {
+
+	public static void main(String[] args) {
+		Student s= new Student();
+		
+		Scanner scan= new Scanner(System.in);
+		
+		System.out.println(s);
+		
+		s.deleteSubject("db");
+		System.out.println(s);
+		StudentManager sm = new StudentManager();
+		
+//		sm.insertStudent(scan);
+//		sm.insertStudent(scan);
+//		sm.serachStudent(scan);
+//		//sm.printStudent();
+		sm.insertStudent(scan);
+		
+		
+		
+		
+	}
+
+}

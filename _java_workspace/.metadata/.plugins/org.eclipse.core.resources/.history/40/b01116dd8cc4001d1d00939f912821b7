@@ -1,0 +1,25 @@
+package day16;
+
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
+public class StreamEx03 {
+
+	public static void main(String[] args) {
+		ArrayList<Student> stdList = new ArrayList<>();
+		
+		stdList.add(new Student("홍길동", 90));
+		stdList.add(new Student("홍길순", 76));
+		stdList.add(new Student("강감찬", 87));
+		stdList.add(new Student("강길동", 46));
+		stdList.add(new Student("강길순", 67));
+		
+		
+		Stream<Object> name=stdList.stream().map(n->n.getName());
+		Stream<Object> score=stdList.stream().map(n->n.getScore());
+		
+		System.out.println(name+":"+score);
+
+	}
+
+}

@@ -1,0 +1,18 @@
+package 수강관리_프로그램;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+interface program{
+	void studentList();
+	void addStudent();
+	void searchStudent();
+	void insertSub();
+	void deleteSub();
+}
+class 

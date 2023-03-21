@@ -1,0 +1,34 @@
+package day16;
+
+import java.util.ArrayList;
+
+public class CustomerMain {
+
+	public static void main(String[] args) {
+		ArrayList<Customer> customer = new ArrayList<>();
+		
+		customer.add(new Customer("이순신", 40, 0));
+		customer.add(new Customer("신사임당", 35, 0));
+		customer.add(new Customer("이아들", 10, 50));
+		
+		//customer.stream().forEach(a->System.out.println("이름:"+a.getName()+", 나이:"+a.getAge()+", 비용:"+a.getCost()+"만원"));
+		//customer.stream().forEach(a->System.out.println(a.toString()));
+//		customer.stream().forEach(a->{
+//			String name= a.getName();
+//			int age =a.getAge();
+//			int cost= a.getCost();
+//			
+//			System.out.println("이름:"+name+", 나이:"+age+", 비용:"+cost+"만원");
+//		});
+		
+		int sum= customer.stream().mapToInt(a->a.getCost()).sum();
+		customer.stream().filter(a->a.getAge()>=15).forEach(a->{
+			a.setCost(100);
+			System.out.println(a.toString());
+		});
+		System.out.println("총 여행비용:"+sum+"만원");
+
+
+	}
+
+}

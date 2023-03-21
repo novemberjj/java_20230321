@@ -1,0 +1,46 @@
+package studentmanager;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class ProgramManager implements Program {
+	private List<Student> stdList= new ArrayList<Student>();
+
+	@Override
+	public void printStudent() {
+		System.out.println("-- 학생 리스트 --");
+		
+		
+	}
+
+	@Override
+	public void insertStudent(Scanner scan) {
+		System.out.println("-- 학생 등록 --");
+		System.out.println("");
+		
+	}
+
+	@Override
+	public void searchStudent(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void registerSubject(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteSubject(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+		
+	
+
+}
